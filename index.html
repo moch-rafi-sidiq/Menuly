@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Menuly — meal planner sederhana untuk merencanakan menu harian, menyimpan resep, dan membuat daftar belanja otomatis.">
+  <meta name="theme-color" content="#102A43">
+  <title>Dashboard · Menuly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B1D2E'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%23F3F7F4' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#app-root">Lewati ke konten utama</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Sidebar Menuly">
+      <a class="brand" href="#dashboard" aria-label="Menuly — kembali ke dashboard">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span class="brand-copy">
+          <strong class="brand-name">Menuly</strong>
+          <small class="brand-sub">Meal planner</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navigasi utama">
+        <p class="nav-label">Ruang kerja</p>
+        <a class="nav-link" data-route="dashboard" href="#dashboard">
+          <span class="nav-icon"><i data-lucide="layout-dashboard" class="icon icon-18"></i></span>
+          <span>Dashboard</span>
+        </a>
+        <a class="nav-link" data-route="planner" href="#planner">
+          <span class="nav-icon"><i data-lucide="calendar-days" class="icon icon-18"></i></span>
+          <span>Rencana Menu</span>
+        </a>
+        <a class="nav-link" data-route="recipes" href="#recipes">
+          <span class="nav-icon"><i data-lucide="book-open" class="icon icon-18"></i></span>
+          <span>Resep</span>
+        </a>
+        <a class="nav-link" data-route="shopping" href="#shopping">
+          <span class="nav-icon"><i data-lucide="shopping-basket" class="icon icon-18"></i></span>
+          <span>Daftar Belanja</span>
+          <span class="nav-badge" data-shopping-badge hidden>0</span>
+        </a>
+        <a class="nav-link" data-route="settings" href="#settings">
+          <span class="nav-icon"><i data-lucide="settings-2" class="icon icon-18"></i></span>
+          <span>Pengaturan</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-tip">
+        <p class="tip-kicker"><i data-lucide="sprout" class="icon icon-14"></i> Tips dapur</p>
+        <p class="tip-title">Rencanakan sekali,<br>masak sepanjang minggu.</p>
+        <p class="tip-text">Isi menu mingguan agar daftar belanja lebih akurat dan hemat.</p>
+        <a class="tip-link" href="#planner">Buka rencana <i data-lucide="arrow-up-right" class="icon icon-14"></i></a>
+      </div>
+
+      <a class="sidebar-user" href="#settings" aria-label="Buka pengaturan profil">
+        <span class="avatar" data-user-initials>M</span>
+        <span class="user-copy">
+          <strong data-user-name>Pengguna Menuly</strong>
+          <small>Data tersimpan lokal</small>
+        </span>
+        <i data-lucide="settings-2" class="icon icon-16"></i>
+      </a>
+    </aside>
+
+    <main class="main" id="main-content">
+      <div id="app-root" class="app-root"></div>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Navigasi seluler">
+    <a class="mobile-nav-link" data-route="dashboard" href="#dashboard">
+      <i data-lucide="layout-dashboard" class="icon icon-20"></i>
+      <span>Dashboard</span>
+    </a>
+    <a class="mobile-nav-link" data-route="planner" href="#planner">
+      <i data-lucide="calendar-days" class="icon icon-20"></i>
+      <span>Rencana</span>
+    </a>
+    <a class="mobile-nav-link" data-route="recipes" href="#recipes">
+      <i data-lucide="book-open" class="icon icon-20"></i>
+      <span>Resep</span>
+    </a>
+    <a class="mobile-nav-link" data-route="shopping" href="#shopping">
+      <i data-lucide="shopping-basket" class="icon icon-20"></i>
+      <span>Belanja</span>
+      <span class="mobile-nav-dot" data-mobile-badge hidden></span>
+    </a>
+    <a class="mobile-nav-link" data-route="settings" href="#settings">
+      <i data-lucide="settings-2" class="icon icon-20"></i>
+      <span>Atur</span>
+    </a>
+  </nav>
+
+  <div class="modal-layer" id="modal-layer" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-shell" id="modal-shell" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"></div>
+  </div>
+
+  <div class="toast-region" id="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/planner.js"></script>
+  <script src="js/recipes.js"></script>
+  <script src="js/shopping.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
